@@ -91,11 +91,8 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 
 //User Routes
-app.use("/", userRouter);
+app.use("/", listingRouter);
 
-app.all("*",(req,res,next)=>{
-    next(new ExpressError(404, "Page Not Found!"));
-});
 
 app.use((err,req,res,next)=>{
     let {statusCode = 500, message="something went wrong" } = err;
